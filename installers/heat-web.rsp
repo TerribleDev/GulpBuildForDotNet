@@ -1,0 +1,7 @@
+dir WebApplication9
+-nologo
+-cg web_files
+-gg -scom -sreg -sfrag -srd
+-dr Install_Web
+-out output\installers\web\web_files.gen.wxs
+-var var.SourceDir

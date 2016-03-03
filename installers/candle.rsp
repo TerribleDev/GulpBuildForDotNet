@@ -1,0 +1,6 @@
+-dSourceDir=WebApplication9
+-nologo
+-out output\installers\web\
+installers\Product.wxs
+output\installers\web\web_Files.gen.wxs
+-ext WixIisExtension

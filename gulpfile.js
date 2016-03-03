@@ -11,12 +11,12 @@ gulp.task('build', function () {
           ));
 });
 
-gulp.task('carbon', function(){
+gulp.task('carbon',['build'] ,function(cb){
 
-carbon.exec({
-  heatFiles: ["installers/heat-web.rsp"],
-  candleFiles: ["installers/candle.rsp"],
-  lightFiles: ["installers/light.rsp"]
-})
+  carbon.exec({
+    heatFiles: ["installers/heat-web.rsp"],
+    candleFiles: ["installers/candle.rsp"],
+    lightFiles: ["installers/light.rsp"]
+  }, cb);
 
 });

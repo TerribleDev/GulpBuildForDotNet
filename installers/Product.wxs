@@ -2,10 +2,10 @@
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
      xmlns:iis="http://schemas.microsoft.com/wix/IIsExtension">
 	<Product Id="*"
-		Name="Gallery"
+		Name="Tommy"
 		Language="1033"
 		Version="1.0.0"
-		Manufacturer="Vistaprint"
+		Manufacturer="Tommy"
 		UpgradeCode="{aba1c34e-39c6-47cf-b50a-cae4e77f8204}">
 		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
 
@@ -28,10 +28,7 @@
 			-->
 		<Property Id="REINSTALLMODE" Value="dmus" />
 
-        <Feature Id="Gallery" Title="Gallery">
-            <ComponentGroupRef Id="web_files" />
-        </Feature>
-        <Feature Id="GalleryWebsite" Title="GalleryWebConfig">
+        <Feature Id="TommyWebsite" Title="TommyWebConfig">
             <ComponentGroupRef Id="web_files" />
             <ComponentRef Id='WebsiteConfig' />
         </Feature>
@@ -40,23 +37,19 @@
 	<Fragment>
 		<Directory Id="TARGETDIR" Name="SourceDir">
 			<Directory Id="IISMain" Name='inetpub'>
-                <Directory Id="VistaprintFolder" Name="Vistaprint">
-                  <Directory Id="INSTALLFOLDER" Name="Gallery">
-                    <Directory Id="Install_Web" Name="Web">
-                        <Component Id='WebsiteConfig' Guid='{890bad01-9211-45b6-b3d0-98cb249a8e7c}' Win64="yes">
-                            <iis:WebSite Id='Gallery' Description='Gallery' Directory='Install_Web' StartOnInstall='yes' ConfigureIfExists='yes' AutoStart='yes'>
-                              <iis:WebAddress Id='DevGallery' Port='80' Header='devGallery' />
-							  <iis:WebAddress Id='DevGalleryLong' Port='80' Header='devGallery.vistaprint.net' />
-                              <iis:WebAddress Id='Gallery' Port='80' Header='Gallery' />
-                              <iis:WebAddress Id='GalleryWildcard' Port='80' Header='*' />
-							  <iis:WebAddress Id='GalleryLong' Port='80' Header='Gallery.vistaprint.net' />
-                              <iis:WebApplication Id='GalleryApp' WebAppPool='GalleryAppPool' Name='Gallery' />
-                            </iis:WebSite>
-                            <iis:WebAppPool Id='GalleryAppPool' Identity="localSystem" RecycleMinutes="0" IdleTimeout="0" ManagedPipelineMode='Integrated' ManagedRuntimeVersion='v4.0' Name='Gallery' />
-                        </Component>
-                    </Directory>
-                  </Directory>
-                </Directory>
+        <Directory Id="MainFolder" Name="Main">
+          <Directory Id="INSTALLFOLDER" Name="Tommy">
+            <Directory Id="Install_Web" Name="Web">
+                <Component Id='WebsiteConfig' Guid='{890bad01-9211-45b6-b3d0-98cb249a8e7c}' Win64="yes">
+                    <iis:WebSite Id='Tommy' Description='Tommy' Directory='Install_Web' StartOnInstall='yes' ConfigureIfExists='yes' AutoStart='yes'>
+                      <iis:WebAddress Id='TommyWildcard' Port='80' Header='*' />
+                      <iis:WebApplication Id='TommyApp' WebAppPool='TommyAppPool' Name='Tommy' />
+                    </iis:WebSite>
+                    <iis:WebAppPool Id='TommyAppPool' Identity="localSystem" RecycleMinutes="0" IdleTimeout="0" ManagedPipelineMode='Integrated' ManagedRuntimeVersion='v4.0' Name='Tommy' />
+                </Component>
+            </Directory>
+          </Directory>
+        </Directory>
 			</Directory>
 		</Directory>
 	</Fragment>

@@ -1,0 +1,9 @@
+-dSourceDir=WebApplication9
+output\installers\web\web_files.gen.wixobj
+output\installers\web\Product.wixobj
+-out output\installers\web\Web.msi
+-nologo
+-sw1076
+-sice:ICE80
+-sice:ICE18
+-ext WixIisExtension
